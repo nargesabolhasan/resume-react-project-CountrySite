@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import {useParams} from "react-router-dom";
 
 const InfoCountryPage = () => {
+  const { name } = useParams()
   return (
-    <div>InfoCountryPage</div>
+    <div>
+       <h1> {name}</h1>
+      InfoCountryPage</div>
   )
 }
 
