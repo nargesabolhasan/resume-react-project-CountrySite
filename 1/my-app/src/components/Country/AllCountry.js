@@ -5,8 +5,9 @@ import OneCounCard from "./OneCounCard";
 
 const Country = ({ url }) => {
   return (
-    <ul>
-      {url.map((value,index) =>(
+    
+    <div>
+      {url.map((value) =>(
       <OneCounCard 
       key={value.name}
       flag={value.flags.png}
@@ -17,7 +18,7 @@ const Country = ({ url }) => {
       />
      ))}
       
-    </ul>
+    </div>
   );
 };
 
