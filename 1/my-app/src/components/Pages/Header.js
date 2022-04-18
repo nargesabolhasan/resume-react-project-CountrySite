@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useParams, NavLink } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { CountryURL } from "../Constants/constant";
 import higherOrederComponent from "../HOC/WithAjax";
+import InfoCountryPage from "./InfoCountryPage";
+import NotFound from "./NotFound";
 
-const Header = ({url}) => {
-
+const Header = ({ url }) => {
   const [search, setSearch] = useState("");
-  const[nameCountry,setNameCountry] = useState([])
+  const [isFind, setIsFind] = useState();
 
-  const handleSearch = () => {
-    url.map(name => (console.log(name)))
-    console.log(url)
-  };
-
+  // const handleSearch = () => {
+  //   url.map((name) => {
+  //     search === name.name ? setIsFind(search):setIsFind("NotFound")
+  //   });
+  // };
   return (
     <header>
       <input
@@ -21,10 +22,11 @@ const Header = ({url}) => {
         placeholder="where do you want to find ?"
         onChange={(e) => setSearch(e.target.value)}
       />
-      <IoSearch onClick={handleSearch} />
+      <NavLink to={`/InfoCountryPage/${search}`}>{search}</NavLink>
+      {/* <IoSearch onClick={handleSearch} /> */}
       <Outlet />
     </header>
   );
 };
 
-export default higherOrederComponent(Header,CountryURL);
+export default higherOrederComponent(Header, CountryURL);
