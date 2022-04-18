@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route, Switch } from "react-router-dom";
-import InfoCountryPage from "./components/Country/InfoCountryPage";
-import AllCountry from "./components/Country/AllCountry";
+import InfoCountryPage from "./components/Pages/InfoCountryPage";
+import AllCountry from "./components/Pages/AllCountry";
 import Header from "./components/Header/Header";
 
 function App() {
