@@ -6,27 +6,13 @@ import higherOrederComponent from "../HOC/WithAjax";
 import InfoCountryPage from "./InfoCountryPage";
 import NotFound from "./NotFound";
 
-const Header = ({ url }) => {
-  const [search, setSearch] = useState("");
-  const [isFind, setIsFind] = useState();
+const Header = () => {
 
-  // const handleSearch = () => {
-  //   url.map((name) => {
-  //     search === name.name ? setIsFind(search):setIsFind("NotFound")
-  //   });
-  // };
   return (
     <header>
-      <input
-        type="text"
-        placeholder="where do you want to find ?"
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <NavLink to={`/InfoCountryPage/${search}`}>{search}</NavLink>
-      {/* <IoSearch onClick={handleSearch} /> */}
-      <Outlet />
+header
     </header>
   );
 };
 
-export default higherOrederComponent(Header, CountryURL);
+export default Header;
