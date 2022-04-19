@@ -37,10 +37,15 @@ const InfoCountryPage = () => {
       }
     });
   };
+//------handle goBack: ----------
+const goBack=()=> {
+  navigate('/', { replace: true });
+}
 
   return (
     <div>
       <h1>{name}</h1>
+      <button onClick={goBack}>Back</button>
       {url.map((info) => (
         <div key={info.name}>
           <div className="details">
