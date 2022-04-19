@@ -11,7 +11,7 @@ const higherOrederComponent = (Component, URLAddress) => {
       axios
         .get(URLAddress)
         .then((res) => setURL(res.data))
-        .catch(() => setError("url not found"))
+        .catch(() => setError("url at HOC not found"))
         .finally(() => setLoading(false));        
     }, []);
     return <Component url={url} error={error} loading={loading} {...props} />;
