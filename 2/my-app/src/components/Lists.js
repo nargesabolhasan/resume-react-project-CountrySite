@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -7,11 +7,17 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CreateIcon from "@mui/icons-material/Create";
 import Typography from "@mui/material/Typography";
-import {titleContext} from "./Context/TitleContextprovider";
+import { titleContext } from "./Context/TitleContextprovider";
 
 const Lists = () => {
-  const {addToTitle,addToParagraph} = useContext(titleContext);
-  const handleClick = (e) => { addToTitle(e.target.innerHTML)};
+  const { changeEditMoode } = useContext(titleContext);
+  const handleClick = (e) => {
+  
+  };
+  const handleEditText = () => {
+    changeEditMoode(true);
+  };
+  const handleDeleteRow = () => {};
 
   return (
     <div>
@@ -23,10 +29,22 @@ const Lists = () => {
             <ListItem
               key={value}
               secondaryAction={
-                <IconButton edge="end" aria-label="comments">
-                  <CreateIcon />
-                  <DeleteIcon />
-                </IconButton>
+                <>
+                  <IconButton
+                    edge="end"
+                    aria-label="comments"
+                    onClick={handleEditText}
+                  >
+                    <CreateIcon />
+                  </IconButton>
+                  <IconButton
+                    edge="end"
+                    aria-label="comments"
+                    onClick={handleDeleteRow}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </>
               }
               disablePadding
             >
@@ -45,10 +63,22 @@ const Lists = () => {
             <ListItem
               key={value}
               secondaryAction={
-                <IconButton edge="end" aria-label="comments">
-                  <CreateIcon />
-                  <DeleteIcon />
-                </IconButton>
+                <>
+                  <IconButton
+                    edge="end"
+                    aria-label="comments"
+                    onClick={handleEditText}
+                  >
+                    <CreateIcon />
+                  </IconButton>
+                  <IconButton
+                    edge="end"
+                    aria-label="comments"
+                    onClick={handleDeleteRow}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </>
               }
               disablePadding
             >
@@ -67,10 +97,22 @@ const Lists = () => {
             <ListItem
               key={value}
               secondaryAction={
-                <IconButton edge="end" aria-label="comments">
-                  <CreateIcon />
-                  <DeleteIcon />
-                </IconButton>
+                <>
+                  <IconButton
+                    edge="end"
+                    aria-label="comments"
+                    onClick={handleEditText}
+                  >
+                    <CreateIcon />
+                  </IconButton>
+                  <IconButton
+                    edge="end"
+                    aria-label="comments"
+                    onClick={handleDeleteRow}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </>
               }
               disablePadding
             >

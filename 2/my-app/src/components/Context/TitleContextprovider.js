@@ -3,15 +3,19 @@ import { createContext, useState } from "react";
 export const titleContext=createContext()
 
 const TitleContextprovider = (props) => {
-  const [title, setTitle] = useState()
-  const [paragraph, setParagraph] = useState('')
+  const [text, setText] = useState({
+    title:'',
+    paragraph:''
+  })
+  const [editMoode, setEditMoode] = useState(false)
   const { children} = props
 
   const value = {
-    title,
-    paragraph,
-    addToTitle: (input) => setTitle(input),
-    addToParagraph: (input) => setParagraph(input),
+    editMoode,
+    text,
+    addToTitle: (input) => setText({...text,title:input}),
+    addToParagraph: (input) => setText({...text,paragraph:input}),
+    changeEditMoode: (input) => setEditMoode(input)
 }
   return (
     <titleContext.Provider value={value} >{children}</titleContext.Provider>

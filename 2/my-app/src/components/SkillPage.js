@@ -1,13 +1,14 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
+import Box from "@mui/material/Box";
 import Lists from "./Lists";
-import {titleContext} from "./Context/TitleContextprovider";
+import { titleContext } from "./Context/TitleContextprovider";
+import FormText from "./FormText";
 
 export default function CheckboxList() {
-
-    const {title,paragraph} = useContext(titleContext);
+  const { text, editMoode } = useContext(titleContext);
 
   return (
     <Container
@@ -25,8 +26,9 @@ export default function CheckboxList() {
           textAlign: "center",
         }}
       >
-        <Lists/>
+        <Lists />
       </Divider>
+
       <Divider
         sx={{
           display: "grid",
@@ -34,9 +36,18 @@ export default function CheckboxList() {
           textAlign: "start",
         }}
       >
-        <Typography>{title}</Typography>
-        <Typography>{paragraph}</Typography>
+        <Divider>
+          {editMoode ? (
+            <FormText />
+          ) : (
+            <Box>
+              <Typography>{text.title}</Typography>
+              <Typography>{text.paragraph}</Typography>
+            </Box>
+          )}
+        </Divider>
       </Divider>
+      
     </Container>
   );
 }
