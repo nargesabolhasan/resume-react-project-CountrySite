@@ -1,25 +1,21 @@
-import { createContext, useState } from "react";
+import { createContext,useState} from "react";
 
-export const titleContext=createContext()
+export const titleContext = createContext();
 
 const TitleContextprovider = (props) => {
-  const [text, setText] = useState({
-    title:'',
-    paragraph:''
-  })
+  const [text, setText] = useState();
   const [editMoode, setEditMoode] = useState(false)
-  const { children} = props
+  const { children } = props;
 
   const value = {
-    editMoode,
     text,
-    addToTitle: (input) => setText({...text,title:input}),
-    addToParagraph: (input) => setText({...text,paragraph:input}),
+    editMoode,
+    addToText: (input) => setText(input),
     changeEditMoode: (input) => setEditMoode(input)
-}
+  };
   return (
-    <titleContext.Provider value={value} >{children}</titleContext.Provider>
-  )
-}
+    <titleContext.Provider value={value}>{children}</titleContext.Provider>
+  );
+};
 
-export default TitleContextprovider
+export default TitleContextprovider;

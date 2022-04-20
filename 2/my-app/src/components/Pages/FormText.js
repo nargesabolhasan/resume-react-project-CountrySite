@@ -4,18 +4,19 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
-import { titleContext } from "./Context/TitleContextprovider";
+import { titleContext } from "../Context/TitleContextprovider";
 import Button from '@mui/material/Button';
 
 const FormText = () => {
-  const { changeEditMoode } = useContext(titleContext);
   const [inputText, setInputText]=useState()
+  const { addToText, text , changeEditMoode } = useContext(titleContext);
 
   const sbmitEdit=()=>{
-     changeEditMoode(false)
+    changeEditMoode(false);
   }
 
   return (
+    
     <Box  sx={{
       display: 'flex',
       alignItems: 'flex-start',
@@ -38,7 +39,8 @@ const FormText = () => {
       <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
           <InputLabel variant="standard" htmlFor="uncontrolled-native">
-            Age
+          Skills
+
           </InputLabel>
           <NativeSelect
             defaultValue={30}

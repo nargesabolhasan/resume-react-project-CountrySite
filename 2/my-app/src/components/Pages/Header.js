@@ -10,6 +10,7 @@ import Divider from "@mui/material/Divider";
 
 export default function ButtonAppBar() {
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -34,5 +35,6 @@ export default function ButtonAppBar() {
         </Toolbar>
       </AppBar>
     </Box>
+    </>
   );
 }

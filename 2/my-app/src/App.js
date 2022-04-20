@@ -1,15 +1,16 @@
 import "./App.css";
 import TitleContextprovider from "./components/Context/TitleContextprovider";
-import Header from "./components/Header";
-import SkillPage from "./components/SkillPage";
+import BasicTabs from "./components/Pages/Tabs";
+import { Routes, Route } from "react-router-dom";
+import Description from "./components/Pages/Description.js";
+import Header from "./components/Pages/Header.js";
+
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <TitleContextprovider>
-        <SkillPage />
-      </TitleContextprovider>
+      <BasicTabs/>
     </div>
   );
 }
