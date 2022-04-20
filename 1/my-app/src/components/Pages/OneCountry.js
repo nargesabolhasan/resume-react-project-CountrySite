@@ -5,7 +5,7 @@ const OneCountry = (props) => {
   const { flag, nativeName, population, region, capital } = props;
   return (
     <NavLink to={`/InfoCountryPage/${nativeName}`}>
-      <div>
+      <div className="country">
         <span>
           <img src={`${flag}`} alt={`${nativeName} flag not found`} />
         </span>

@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import higherOrederComponent from "../HOC/WithAjax";
 import { CountryURL } from "../Constants/constant";
 import OneCountry from "./OneCountry";
+import SearchBar from "./Search&Filter/SearchBar";
 
 const Country = ({ url, error, loading }) => {
   if (error) {
     return <>{error}</>;
   } else if (loading) {
-    return <>loading...</>;
+    return <span className="loader">wait to loading...</span>;
   } else {
     return (
-      <div>
-        hhh
+      <><SearchBar/>
+      <div  className="countries">
         {url.map((value) => {
           return (
             <OneCountry
@@ -25,6 +26,7 @@ const Country = ({ url, error, loading }) => {
           );
         })}
       </div>
+      </>
     );
   }
 };
