@@ -5,20 +5,16 @@ import axios from "axios";
 export const countryUrlContext = createContext();
 
 const URLContextProvider = ({ children }) => {
-  const { name } = useParams();
-  const [AllCountry, setAllCountry] = useState([]);
-  const infoCountryURL = `https://restcountries.com/v2/name/${name}`;
-  const CountryURL="https://restcountries.com/v2/all"
-  
-  useEffect(() => {
-    axios
-      .get(CountryURL)
-      .then((res) => setAllCountry(prev => ([...prev, res.data])))
-      .catch((cth) => alert("AllCountry url not found"));
-  },[]);
+  const [AllCountry, setAllCountry] = useState("https://restcountries.com/v2/all");
+  // const CountryURL="https://restcountries.com/v2/all"
+
+  const value={
+    AllCountry,
+    changeUrl: (input) => setAllCountry(input)
+  }
 
   return (
-    <countryUrlContext.Provider value={AllCountry}>
+    <countryUrlContext.Provider value={value}>
       {children}
     </countryUrlContext.Provider>
   );

@@ -1,11 +1,14 @@
-import React, {  useEffect } from "react";
+import React, {  useEffect,useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { themeContext } from "../Context/ThemeContextProvider";
+import { THEME } from "../Constants/ThemeConst";
 
 const OneCountry = (props) => {
+  const { theme, darkMode, lightMode } = useContext(themeContext);
   const { flag, nativeName, population, region, capital } = props;
   return (
     <NavLink to={`/InfoCountryPage/${nativeName}`}>
-      <div className="country">
+      <div className={theme === THEME.DARK ? "country" : "countryDark"}>
         <span>
           <img src={`${flag}`} alt={`${nativeName} flag not found`} />
         </span>

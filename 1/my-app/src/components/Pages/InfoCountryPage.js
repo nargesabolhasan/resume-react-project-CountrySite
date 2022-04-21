@@ -3,9 +3,12 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { HiArrowNarrowLeft } from 'react-icons/hi'
+import { themeContext } from "../Context/ThemeContextProvider";
+import { THEME } from "../Constants/ThemeConst";
 // import higherOrederComponent from '../HOC/WithAjax'
 
 const InfoCountryPage = () => {
+  const { theme, darkMode, lightMode } = useContext(themeContext);
   let { name } = useParams();
   const infoCountryURL = `https://restcountries.com/v2/name/${name}`;
   const CountryURL = "https://restcountries.com/v2/all";
@@ -43,10 +46,10 @@ const InfoCountryPage = () => {
   };
 
   return (
-   <div className="singleCountry">
+   <div className={theme === THEME.DARK ? "singleCountry" : "singleCountryDark"} >
      <button onClick={goBack}><HiArrowNarrowLeft />goBack</button>
       {url.map((info) => (
-        <div className="countryContainer" key={info.nativeName}>
+        <div className={theme === THEME.DARK ? "countryContainer" : "countryContainerDark"} key={info.nativeName}>
           <img src={info.flags.png} alt={`${info.nativeName} flag not found`} />
           <section>
             <h1> {name}</h1>
