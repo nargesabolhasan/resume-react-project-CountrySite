@@ -18,11 +18,10 @@ import axios from "axios";
 import { countryUrlContext } from "../../Context/URLContext";
 
 const SearchBar = (props) => {
-  // let { name } = useParams();
-  const { theme, darkMode, lightMode } = useContext(themeContext);
+
+  const { theme } = useContext(themeContext);
   const infoCountryURL = "https://restcountries.com/v2/all";
   const [url, setURL] = useState([]);
-  // const [isFind, setIsFind] = useState();
   const { changeUrl } = useContext(countryUrlContext);
   let navigate = useNavigate();
 
@@ -39,8 +38,7 @@ const SearchBar = (props) => {
     url.map((i) => {
       var nameLowerCase = i.name.toLowerCase();
       if (nameLowerCase === searchLowerCase) {
-        const url = `https://restcountries.eu/rest/v2/name/${i.name}`;
-        changeUrl(url);
+        changeUrl(i.name);
         navigate(`/FilteredPage/${i.name}`, { replace: true });
       }
     });

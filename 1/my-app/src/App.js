@@ -22,12 +22,6 @@ function App() {
           <Route path="/FilteredPage/:filter" element={<FilteredPage />} />
         </Route>
       </Routes>
-
-      {/* <Routes>
-          <Route  path="/" element={<AllCountry />} />
-          <Route path="/InfoCountryPage/:name" element={<InfoCountryPage />} />
-          <Route path="/InfoCountryPage/NotFound" element={<NotFound/>} />
-      </Routes> */}
     </div>
   );
 }

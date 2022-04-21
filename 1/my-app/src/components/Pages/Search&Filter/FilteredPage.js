@@ -11,10 +11,11 @@ const InfoCountryPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [url, setURL] = useState([]);
+  const infoCountryURL = `https://restcountries.com/v2/name/${AllCountry}`;
   useEffect(() => {
     setLoading(true);
     axios
-      .get(AllCountry)
+      .get(infoCountryURL)
       .then((res) => setURL(res.data))
       .catch(() => setError("url at HOC not found"))
       .finally(() => setLoading(false));        

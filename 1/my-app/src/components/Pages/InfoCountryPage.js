@@ -1,7 +1,7 @@
 import React, { useEffect, useState ,useContext} from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { HiArrowNarrowLeft } from 'react-icons/hi'
 import { themeContext } from "../Context/ThemeContextProvider";
 import { THEME } from "../Constants/ThemeConst";
@@ -64,7 +64,7 @@ const InfoCountryPage = () => {
       {url.map((info) => (
         <div className={theme === THEME.DARK ? "countryContainer" : "countryContainerDark"} key={info.nativeName}>
           <img src={info.flags.png} alt={`${info.nativeName} flag not found`} />
-          <section>
+          <section style={{width:"100vw"}}>
             <h1> {name}</h1>
             <div className="details">
               <div className="details1">
