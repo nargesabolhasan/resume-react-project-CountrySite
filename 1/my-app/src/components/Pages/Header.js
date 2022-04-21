@@ -1,10 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Outlet, useParams, NavLink, Link } from "react-router-dom";
-import { IoSearch } from "react-icons/io5";
-import { CountryURL } from "../Constants/constant";
-import higherOrederComponent from "../HOC/WithAjax";
-import InfoCountryPage from "./InfoCountryPage";
-import NotFound from "./NotFound";
+import React, {useContext } from "react";
+import { Outlet, Link } from "react-router-dom";
+
 import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
 import { themeContext } from "../Context/ThemeContextProvider";
 import { THEME } from "../Constants/ThemeConst";

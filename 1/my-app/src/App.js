@@ -7,6 +7,7 @@ import Header from "./components/Pages/Header";
 import NotFound from "./components/Pages/NotFound";
 import "./scss/style.scss";
 import FilteredPage from "./components/Pages/Search&Filter/FilteredPage";
+import RegionFilter from "./components/Pages/Search&Filter/RegionFilter";
 import {themeContext}  from "./components/Context/ThemeContextProvider";
 import { THEME } from "./components/Constants/ThemeConst";
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/InfoCountryPage/:name" element={<InfoCountryPage />} />
           <Route path="/NotFound" element={<NotFound />} />
           <Route path="/FilteredPage/:filter" element={<FilteredPage />} />
+          <Route path="/RegionFilter/:Region" element={<RegionFilter />} />
         </Route>
       </Routes>
     </div>

@@ -1,28 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
   Outlet,
-  useParams,
-  NavLink,
-  Link,
   useNavigate,
 } from "react-router-dom";
 import { themeContext } from "../../Context/ThemeContextProvider";
 import { THEME } from "../../Constants/ThemeConst";
-import { IoSearch } from "react-icons/io5";
-import { CountryURL } from "../../Constants/constant";
-import higherOrederComponent from "../../HOC/WithAjax";
-import InfoCountryPage from "../InfoCountryPage";
-import NotFound from "../NotFound";
 import { HiSearch } from "react-icons/hi";
 import axios from "axios";
 import { countryUrlContext } from "../../Context/URLContext";
 
 const SearchBar = (props) => {
-
   const { theme } = useContext(themeContext);
   const infoCountryURL = "https://restcountries.com/v2/all";
   const [url, setURL] = useState([]);
-  const { changeUrl } = useContext(countryUrlContext);
+  const { changeUrl, AllCountry } = useContext(countryUrlContext);
   let navigate = useNavigate();
 
   //----------------------
@@ -44,6 +35,12 @@ const SearchBar = (props) => {
     });
   };
 
+  //----------------------
+  const handleFilter = (e) => {
+    changeUrl(e.target.value);
+    navigate(`/RegionFilter/${e.target.value}`, { replace: true });
+  };
+
   return (
     <>
       <nav>
@@ -59,22 +56,20 @@ const SearchBar = (props) => {
         </label>
 
         <select
+          onChange={handleFilter}
           name="filter"
-          onChange={props.fetchData}
           className={theme === THEME.DARK ? "input" : "inputDark"}
         >
+          {" "}
           <option defaultValue hidden>
             Filter By Region
           </option>
-
           <option
             value="africa"
             className={theme === THEME.DARK ? "input" : "inputDark"}
           >
             Africa
-            {/* <Link to={`/InfoCountryPage/SearchBar${filter}`}>Africa</Link> */}
           </option>
-
           <option
             value="americas"
             className={theme === THEME.DARK ? "input" : "inputDark"}

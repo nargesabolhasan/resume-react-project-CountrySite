@@ -34,7 +34,7 @@ body {
     background-color: $Very-Light-Gray;
 }
 .AppDark{
-    height: 100vh;
+    min-height: 100vh;
     color: $Very-Dark-Blue-Text;
     background-color: $Very-Dark-Blue;
 }
@@ -162,6 +162,15 @@ nav {
     column-gap: 75px;
     justify-content: center;
     padding: 0 75px;
+}
+.countriesDark {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 75px;
+    column-gap: 75px;
+    justify-content: center;
+    padding: 0 75px;
+    background-color: $Very-Dark-Blue;
 }
 .input{
     color:$Very-Dark-Blue-Text;
@@ -433,6 +442,16 @@ nav {
 
 
 @media only screen and (max-width: 600px) {
+    .App{
+        height: 100vh;
+        color: $White;
+        background-color: $Very-Light-Gray;
+    }
+    .AppDark{
+        min-height: 100vh;
+        color: $Very-Dark-Blue-Text;
+        background-color: $Very-Dark-Blue;
+    }
 
     h1 {
         font-size: 18px;
@@ -471,6 +490,12 @@ nav {
         background-color:$Very-Light-Gray;
         
     }
+    .countryDark {
+        padding: 0px 30px;
+        background-color: $Dark-Blue;
+        color: $Very-Light-Gray;
+      }
+
 
     .country {
         width: 100%;

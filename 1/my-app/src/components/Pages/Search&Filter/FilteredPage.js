@@ -1,12 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import OneCountry from "../OneCountry";
-import SearchBar from "./SearchBar";
 import { countryUrlContext } from "../../Context/URLContext";
-import {  useNavigate ,useParams} from "react-router-dom";
-import { HiArrowNarrowLeft } from 'react-icons/hi'
+import { useNavigate } from "react-router-dom";
+import { HiArrowNarrowLeft } from "react-icons/hi";
 import axios from "axios";
+import { themeContext } from "../../Context/ThemeContextProvider";
+import { THEME } from "../../Constants/ThemeConst";
 
 const InfoCountryPage = () => {
+  const { theme } = useContext(themeContext);
+  let navigate = useNavigate();
   const { AllCountry } = useContext(countryUrlContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -17,19 +20,34 @@ const InfoCountryPage = () => {
     axios
       .get(infoCountryURL)
       .then((res) => setURL(res.data))
-      .catch(() => setError("url at HOC not found"))
-      .finally(() => setLoading(false));        
+      .catch(() => setError("page not found"))
+      .finally(() => setLoading(false));
   }, []);
-  console.log(url)
+
+  //------handle goBack: ----------
+  const goBack = () => {
+    navigate("/", { replace: true });
+  };
 
   if (error) {
-    return <>{error}</>;
+    return (
+      <span className={theme === THEME.DARK ? "loader" : "loaderDark"}>
+        {error}
+      </span>
+    );
   } else if (loading) {
-    return <span className="loader">wait to loading...</span>;
+    return (
+      <span className={theme === THEME.DARK ? "loader" : "loaderDark"}>
+        wait to loading...
+      </span>
+    );
   } else {
     return (
-      <>
-        <SearchBar />
+      <div className="singleCountry">
+        <button onClick={goBack}>
+          <HiArrowNarrowLeft />
+          goBack
+        </button>
         <div className="countries">
           {url.map((value) => {
             return (
@@ -44,7 +62,7 @@ const InfoCountryPage = () => {
             );
           })}
         </div>
-      </>
+      </div>
     );
   }
 };

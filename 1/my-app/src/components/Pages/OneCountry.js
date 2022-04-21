@@ -1,4 +1,4 @@
-import React, {  useEffect,useContext } from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { themeContext } from "../Context/ThemeContextProvider";
 import { THEME } from "../Constants/ThemeConst";

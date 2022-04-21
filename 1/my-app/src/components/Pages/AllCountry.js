@@ -1,15 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import higherOrederComponent from "../HOC/WithAjax";
 import { CountryURL } from "../Constants/constant";
 import OneCountry from "./OneCountry";
 import SearchBar from "./Search&Filter/SearchBar";
-import { useParams } from "react-router-dom";
 import { themeContext } from "../Context/ThemeContextProvider";
 import { THEME } from "../Constants/ThemeConst";
 
 const Country = ({ url, error, loading }) => {
-  let { name } = useParams();
-  const { theme, darkMode, lightMode } = useContext(themeContext);
+
+  const { theme } = useContext(themeContext);
  
   if (error) {
     return <span className={theme === THEME.DARK ? "loader" : "loaderDark"}>{error}</span>;
@@ -19,7 +18,7 @@ const Country = ({ url, error, loading }) => {
     return (
       <>
         <SearchBar />
-        <div className="countries">
+        <div className={theme === THEME.DARK ? "countries" : "countriesDark"}>
           {url.map((value) => {
             return (
               <OneCountry

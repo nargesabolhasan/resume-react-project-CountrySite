@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { HiArrowNarrowLeft } from 'react-icons/hi'
 import { themeContext } from "../Context/ThemeContextProvider";
 import { THEME } from "../Constants/ThemeConst";
-// import higherOrederComponent from '../HOC/WithAjax'
 
 const InfoCountryPage = () => {
-  const { theme, darkMode, lightMode } = useContext(themeContext);
+  const { theme } = useContext(themeContext);
 
   let { name } = useParams();
 
@@ -39,6 +38,7 @@ const InfoCountryPage = () => {
       .then((res) => setAllCountry(res.data))
       .catch((cth) => alert("AllCountry url not found"));
   }, [name]);
+
   //----handle Borders:---------
   const handleBorders = (item) => {
     AllCountry.map((i) => {
@@ -49,10 +49,13 @@ const InfoCountryPage = () => {
       }
     });
   };
+
   //------handle goBack: ----------
   const goBack = () => {
     navigate("/", { replace: true });
   };
+
+  
   if (error) {
     return <span className={theme === THEME.DARK ? "loader" : "loaderDark"}>{error}</span>;
   } else if (loading) {
