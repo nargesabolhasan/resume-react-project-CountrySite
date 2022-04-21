@@ -5,43 +5,39 @@ import { useNavigate } from "react-router-dom";
 import { HiArrowNarrowLeft } from 'react-icons/hi'
 import { themeContext } from "../Context/ThemeContextProvider";
 import { THEME } from "../Constants/ThemeConst";
+import higherOrederComponent from "../HOC/WithAjax";
+import { CountryURL } from "../Constants/constant";
 
-const InfoCountryPage = () => {
+const InfoCountryPage = ({url}) => {
+
   const { theme } = useContext(themeContext);
 
   let { name } = useParams();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [url, setURL] = useState([]);
   const [AllCountry, setAllCountry] = useState([]);
 
   const infoCountryURL = `https://restcountries.com/v2/name/${name}`;
-  const CountryURL = "https://restcountries.com/v2/all";
 
   let navigate = useNavigate();
 
+  useEffect(()=>{
+    axiosAtName()
+  },[name])
   //----axios at name:---------
   const axiosAtName = () => {
     setLoading(true);
     axios
       .get(infoCountryURL)
-      .then((res) => setURL(res.data))
+      .then((res) => setAllCountry(res.data))
       .catch(() => setError("info Country URL not found"))
       .finally(() => setLoading(false));    
   };
-  //----axios at all:---------
-  useEffect(() => {
-    axiosAtName();
-    axios
-      .get(CountryURL)
-      .then((res) => setAllCountry(res.data))
-      .catch((cth) => alert("AllCountry url not found"));
-  }, [name]);
 
   //----handle Borders:---------
   const handleBorders = (item) => {
-    AllCountry.map((i) => {
+    url.map((i) => {
       if (i.alpha3Code === item) {
         const country = i.name;
         name = country;
@@ -64,7 +60,7 @@ const InfoCountryPage = () => {
   return (
    <div className={theme === THEME.DARK ? "singleCountry" : "singleCountryDark"} >
      <button onClick={goBack}><HiArrowNarrowLeft />goBack</button>
-      {url.map((info) => (
+      {AllCountry.map((info) => (
         <div className={theme === THEME.DARK ? "countryContainer" : "countryContainerDark"} key={info.nativeName}>
           <img src={info.flags.png} alt={`${info.nativeName} flag not found`} />
           <section style={{width:"100vw"}}>
@@ -134,4 +130,4 @@ const InfoCountryPage = () => {
   );}
 };
 
-export default InfoCountryPage;
+export default higherOrederComponent(InfoCountryPage,CountryURL);

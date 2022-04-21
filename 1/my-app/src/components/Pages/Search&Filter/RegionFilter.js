@@ -14,6 +14,7 @@ const RegionFilter = () => {
   const { AllCountry } = useContext(countryUrlContext);
 
     const RegionURL=`https://restcountries.com/v2/region/${AllCountry}`
+    
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [url, setURL] = useState([]);

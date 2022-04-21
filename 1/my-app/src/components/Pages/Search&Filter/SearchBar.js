@@ -8,33 +8,24 @@ import { THEME } from "../../Constants/ThemeConst";
 import { HiSearch } from "react-icons/hi";
 import axios from "axios";
 import { countryUrlContext } from "../../Context/URLContext";
+import { CountryURL } from "../../Constants/constant";
+import higherOrederComponent from "../../HOC/WithAjax";
 
-const SearchBar = (props) => {
+const SearchBar = ({ url }) => {
   const { theme } = useContext(themeContext);
-  const infoCountryURL = "https://restcountries.com/v2/all";
-  const [url, setURL] = useState([]);
   const { changeUrl, AllCountry } = useContext(countryUrlContext);
   let navigate = useNavigate();
-
-  //----------------------
-  useEffect(() => {
-    axios
-      .get(infoCountryURL)
-      .then((res) => setURL(res.data))
-      .catch((cth) => alert("SearchBar URL not found"));
-  }, []);
   //----------------------
   const searchHandler = (e) => {
     var searchLowerCase = e.target.value.toLowerCase();
-    url.map((i) => {
+    url.filter((i) => {
       var nameLowerCase = i.name.toLowerCase();
-      if (nameLowerCase === searchLowerCase) {
+      if (nameLowerCase.includes( searchLowerCase)) {
         changeUrl(i.name);
         navigate(`/FilteredPage/${i.name}`, { replace: true });
       }
     });
   };
-
   //----------------------
   const handleFilter = (e) => {
     changeUrl(e.target.value);
@@ -49,7 +40,6 @@ const SearchBar = (props) => {
           <input
             className={theme === THEME.DARK ? "input" : "inputDark"}
             name="search"
-            // value={search}
             onChange={searchHandler}
             placeholder="Search for a country..."
           ></input>
@@ -101,4 +91,4 @@ const SearchBar = (props) => {
   );
 };
 
-export default SearchBar;
+export default higherOrederComponent(SearchBar,CountryURL);
