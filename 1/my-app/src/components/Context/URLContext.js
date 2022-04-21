@@ -5,7 +5,7 @@ import axios from "axios";
 export const countryUrlContext = createContext();
 
 const URLContextProvider = ({ children }) => {
-  const [AllCountry, setAllCountry] = useState("https://restcountries.com/v2/all");
+  const [AllCountry, setAllCountry] = useState("");
   // const CountryURL="https://restcountries.com/v2/all"
 
   const value={

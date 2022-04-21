@@ -4,14 +4,17 @@ import { CountryURL } from "../Constants/constant";
 import OneCountry from "./OneCountry";
 import SearchBar from "./Search&Filter/SearchBar";
 import { useParams } from "react-router-dom";
+import { themeContext } from "../Context/ThemeContextProvider";
+import { THEME } from "../Constants/ThemeConst";
 
 const Country = ({ url, error, loading }) => {
   let { name } = useParams();
+  const { theme, darkMode, lightMode } = useContext(themeContext);
  
   if (error) {
-    return <>{error}</>;
+    return <span className={theme === THEME.DARK ? "loader" : "loaderDark"}>{error}</span>;
   } else if (loading) {
-    return <span className="loader">wait to loading...</span>;
+    return <span className={theme === THEME.DARK ? "loader" : "loaderDark"}>wait to loading...</span>;
   } else {
     return (
       <>

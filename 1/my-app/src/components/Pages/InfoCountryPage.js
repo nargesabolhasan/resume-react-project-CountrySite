@@ -9,18 +9,27 @@ import { THEME } from "../Constants/ThemeConst";
 
 const InfoCountryPage = () => {
   const { theme, darkMode, lightMode } = useContext(themeContext);
+
   let { name } = useParams();
-  const infoCountryURL = `https://restcountries.com/v2/name/${name}`;
-  const CountryURL = "https://restcountries.com/v2/all";
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [url, setURL] = useState([]);
   const [AllCountry, setAllCountry] = useState([]);
+
+  const infoCountryURL = `https://restcountries.com/v2/name/${name}`;
+  const CountryURL = "https://restcountries.com/v2/all";
+
   let navigate = useNavigate();
+
   //----axios at name:---------
   const axiosAtName = () => {
+    setLoading(true);
     axios
       .get(infoCountryURL)
       .then((res) => setURL(res.data))
-      .catch((cth) => alert("info Country URL not found"));
+      .catch(() => setError("info Country URL not found"))
+      .finally(() => setLoading(false));    
   };
   //----axios at all:---------
   useEffect(() => {
@@ -44,7 +53,11 @@ const InfoCountryPage = () => {
   const goBack = () => {
     navigate("/", { replace: true });
   };
-
+  if (error) {
+    return <span className={theme === THEME.DARK ? "loader" : "loaderDark"}>{error}</span>;
+  } else if (loading) {
+    return <span className={theme === THEME.DARK ? "loader" : "loaderDark"}>wait to loading...</span>;
+  } else {
   return (
    <div className={theme === THEME.DARK ? "singleCountry" : "singleCountryDark"} >
      <button onClick={goBack}><HiArrowNarrowLeft />goBack</button>
@@ -115,7 +128,7 @@ const InfoCountryPage = () => {
         </div>
       ))}
     </div>
-  );
+  );}
 };
 
 export default InfoCountryPage;
