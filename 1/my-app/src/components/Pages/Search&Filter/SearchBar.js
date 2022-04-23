@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  Outlet,
-  useNavigate,
-} from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { themeContext } from "../../Context/ThemeContextProvider";
 import { THEME } from "../../Constants/ThemeConst";
 import { HiSearch } from "react-icons/hi";
@@ -20,7 +17,7 @@ const SearchBar = ({ url }) => {
     var searchLowerCase = e.target.value.toLowerCase();
     url.filter((i) => {
       var nameLowerCase = i.name.toLowerCase();
-      if (nameLowerCase.includes( searchLowerCase)) {
+      if (nameLowerCase.includes(searchLowerCase)) {
         changeUrl(i.name);
         navigate(`/FilteredPage/${i.name}`, { replace: true });
       }
@@ -31,7 +28,7 @@ const SearchBar = ({ url }) => {
     changeUrl(e.target.value);
     navigate(`/RegionFilter/${e.target.value}`, { replace: true });
   };
-
+  //----------------------
   return (
     <>
       <nav>
@@ -91,4 +88,4 @@ const SearchBar = ({ url }) => {
   );
 };
 
-export default higherOrederComponent(SearchBar,CountryURL);
+export default higherOrederComponent(SearchBar, CountryURL);

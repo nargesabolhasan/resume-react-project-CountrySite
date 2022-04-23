@@ -9,6 +9,7 @@ import TabLists from "./TabLists";
 import Description from "./Description";
 import FormText from "./FormText";
 import { titleContext } from "../Context/TitleContextprovider";
+import { Grid } from "@mui/material";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -65,7 +66,8 @@ export default function BasicTabs() {
           height: "550px"
         }}
       >
-        <TabPanel value={value} index={0}>
+       
+        {/* <TabPanel value={value} index={0} subject="All">
           <Lists />
         </TabPanel>
         <TabPanel value={value} index={1}>
@@ -76,9 +78,9 @@ export default function BasicTabs() {
         </TabPanel>
         <TabPanel value={value} index={3}>
           <TabLists item1="NodeJS" item2="MongoDB" subject="Back-End" />
-        </TabPanel>
+        </TabPanel> */}
 
-        {editMoode ? <FormText /> : <Description />}
+        {editMoode ? <FormText/> : <Description />}
 
       </Box>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -86,11 +88,12 @@ export default function BasicTabs() {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+          centered
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Three" {...a11yProps(3)} />
+          <Tab label="All" {...a11yProps(0)} />
+          <Tab label="Web Design" {...a11yProps(1)} sx={{marginLeft:"25px"}}/>
+          <Tab label="Front-End" {...a11yProps(2)}  sx={{marginLeft:"25px"}}/>
+          <Tab label="Back-End" {...a11yProps(3)} sx={{marginLeft:"25px"}}/>
         </Tabs>
       </Box>
     </>

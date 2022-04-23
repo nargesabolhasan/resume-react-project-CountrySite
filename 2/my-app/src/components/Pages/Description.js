@@ -7,7 +7,7 @@ import { titleContext } from "../Context/TitleContextprovider";
 const Description = ({ url }) => {
   const { addToText, text, changeEditMoode } = useContext(titleContext);
   return (
-    <Box sx={{borderLeft:1.5,borderColor: 'grey.300'}}>
+    <Box sx={{borderLeft:1.5,borderColor: 'grey.300',textAlign: 'center',p:5}}>
        <Typography>{text}</Typography>
       {url.map((skills) => {
         if (text === skills.Title) {
