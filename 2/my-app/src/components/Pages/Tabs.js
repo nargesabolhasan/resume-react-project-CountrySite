@@ -60,14 +60,15 @@ export default function BasicTabs() {
           gridTemplateColumns: "repeat(2, 1fr)",
           textAlign: "start",
           marginTop: "20px",
-          width: "100%",
+          width: "99.5vw",
           border:1.5,
           borderColor: 'grey.300',
-          height: "550px"
+          height: "550px",
+          mx:"auto"
         }}
       >
        
-        {/* <TabPanel value={value} index={0} subject="All">
+        <TabPanel value={value} index={0} subject="All">
           <Lists />
         </TabPanel>
         <TabPanel value={value} index={1}>
@@ -78,7 +79,7 @@ export default function BasicTabs() {
         </TabPanel>
         <TabPanel value={value} index={3}>
           <TabLists item1="NodeJS" item2="MongoDB" subject="Back-End" />
-        </TabPanel> */}
+        </TabPanel>
 
         {editMoode ? <FormText/> : <Description />}
 

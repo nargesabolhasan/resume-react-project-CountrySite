@@ -1,16 +1,18 @@
 import "./App.css";
-import TitleContextprovider from "./components/Context/TitleContextprovider";
-import BasicTabs from "./components/Pages/Tabs";
 import { Routes, Route } from "react-router-dom";
-import Description from "./components/Pages/Description.js";
-import Header from "./components/Pages/Header.js";
-
+import Home from "./components/Pages/Home.js";
+import Login from "./components/Pages/Login.js";
+import Dashboard from "./components/Pages/Dashboard.js";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <BasicTabs/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        {/* <Route path="/about" element={<About />} /> */}
+      </Routes>
     </div>
   );
 }

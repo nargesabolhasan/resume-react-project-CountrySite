@@ -9,12 +9,17 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { BrowserRouter } from "react-router-dom";
 import TitleContextprovider from "./components/Context/TitleContextprovider";
+import IsLoginprovider from "./components/Context/IsLogin";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
       <TitleContextprovider>
-        <App />
+        <IsLoginprovider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </IsLoginprovider>
       </TitleContextprovider>
   </React.StrictMode>
 );

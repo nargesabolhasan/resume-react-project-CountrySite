@@ -7,34 +7,58 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Divider from "@mui/material/Divider";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { NavLink } from "react-router-dom";
 
 export default function ButtonAppBar() {
   return (
     <>
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              my skills within
-            </Typography>
-            <Typography variant="h2" component="div" sx={{ flexGrow: 1 }}>
-              Material UI
-            </Typography>
-          </Box>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Box sx={{ flexGrow: 1 }}>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                my skills within
+              </Typography>
+              <Typography variant="h2" component="div" sx={{ flexGrow: 1 }}>
+                Material UI
+              </Typography>
+            </Box>
+            <Button color="inherit">
+              <NavLink
+                to="/Login"
+                style={(isActive) => ({
+                  color: isActive ? "white" : "blue",
+                  textDecorationLine: "none"
+                })}
+              >
+                Login
+              </NavLink>
+            </Button>
+            <Button color="inherit">
+              <NavLink
+                style={(isActive) => ({
+                  color: isActive ? "white" : "blue",
+                  textDecorationLine: "none"
+                })}
+                to="/Dashboard"
+              >
+                Dashboard
+              </NavLink>
+            </Button>
+            <AddCircleIcon sx={{ color: "warning.main", fontSize: "70px" }} />
+          </Toolbar>
+        </AppBar>
+      </Box>
     </>
   );
 }

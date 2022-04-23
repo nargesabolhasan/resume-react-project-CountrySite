@@ -1,21 +1,25 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import { titleContext } from "../Context/TitleContextprovider";
 import Button from "@mui/material/Button";
+import higherOrederID from "../HOC/WithID";
+import higherOrederComponent from "../HOC/WithAjax";
+import axios from "axios";
+import { BASE_URL } from "../config/BaseURL";
 
-const FormText = () => {
-  const descriptionInput = useRef(null);
+const FormText = ({ ID, url }) => {
   const [inputText, setInputText] = useState();
-  const { addToText, text, changeEditMoode } = useContext(titleContext);
+  const [defaultVal, setDefaultValue] = useState("");
+  const { text, changeEditMoode } = useContext(titleContext);
 
   const sbmitEdit = () => {
     changeEditMoode(false);
-    let input=descriptionInput.current
-    console.log(input.value)
+    axios.patch(`${BASE_URL}/${ID}`, { Description: inputText });
   };
 
   return (
@@ -59,14 +63,18 @@ const FormText = () => {
           </NativeSelect>
         </FormControl>
       </Box>
+      <Typography  sx={{ color: "rgb(128, 128, 128)" }}>Description</Typography>
       <TextField
-        ref={descriptionInput}
+        id="standard-multiline-static"
+        multiline
         sx={{ width: "300px", textAlign: "center" }}
-        id="standard-helperText"
-        label="Description"
-        placeholder="add skills here..."
+        defaultValue={url.map((skills) => {
+          if (text === skills.Title) {
+            return skills.Description;
+          }
+        })}
         variant="standard"
-        onChange={(e) => setInputText(e.target.value)}
+        onChange={(e) =>setInputText(e.target.value)}
       />
       <Button variant="text" onClick={sbmitEdit} sx={{ mx: "auto" }}>
         EDIT
@@ -75,4 +83,4 @@ const FormText = () => {
   );
 };
 
-export default FormText;
+export default higherOrederComponent(higherOrederID(FormText), BASE_URL);
