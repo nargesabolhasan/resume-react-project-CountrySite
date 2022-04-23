@@ -13,11 +13,27 @@ const Dashboard = () => {
   const handleBack = () => {
     navigate("/Login", { replace: true });
   };
-  
+
+  const handleBackHome = () => {
+    navigate("/", { replace: true });
+  };
+
   return (
     <div>
       {isLogin ? (
-        <Typography>hi <SentimentVerySatisfiedIcon/></Typography>
+        <Box sx={{mt: 30 }}>
+          <Typography variant="h3" sx={{ color: "success.main"}}>
+            welcome <SentimentVerySatisfiedIcon sx={{ fontSize: "50px" }} />
+          </Typography>
+          <Button
+            sx={{ mt: 10 }}
+            variant="outlined"
+            onClick={handleBackHome}
+          >
+            <KeyboardBackspaceIcon />
+            Back to Home page
+          </Button>
+        </Box>
       ) : (
         <Box sx={{ mt: 20 }}>
           <Typography variant="h3" sx={{ color: "warning.main" }}>

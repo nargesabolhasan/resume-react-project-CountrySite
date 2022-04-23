@@ -44,7 +44,7 @@ const Login = () => {
             alert("lOGIN completed successfully");
             setSubmitting(false);
             userIsLogin();
-            navigate("/", { replace: true });
+            navigate("/Dashboard", { replace: true });
           }, 400);
         }}
       >

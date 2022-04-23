@@ -1,14 +1,12 @@
-import React from 'react'
-import Header from "./Header"
-import Tabs from "./Tabs"
+import ReactDOM from "react";
+import Tabs from "./Tabs";
 
 const Home = () => {
   return (
     <div>
-        <Header/>
-        <Tabs/>
+        <Tabs />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

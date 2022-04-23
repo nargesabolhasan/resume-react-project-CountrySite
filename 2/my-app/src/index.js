@@ -10,10 +10,12 @@ import "@fontsource/roboto/700.css";
 import { BrowserRouter } from "react-router-dom";
 import TitleContextprovider from "./components/Context/TitleContextprovider";
 import IsLoginprovider from "./components/Context/IsLogin";
+import Theme from "./components/Theme/Theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <Theme>
       <TitleContextprovider>
         <IsLoginprovider>
           <BrowserRouter>
@@ -21,6 +23,7 @@ root.render(
           </BrowserRouter>
         </IsLoginprovider>
       </TitleContextprovider>
+    </Theme>
   </React.StrictMode>
 );
 

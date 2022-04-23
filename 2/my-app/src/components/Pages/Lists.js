@@ -11,17 +11,20 @@ import { titleContext } from "../Context/TitleContextprovider";
 
 const Lists = ({ url }) => {
   const {addToText,text,changeEditMoode} = useContext(titleContext);
+  let items=["HTML", "CSS","JavaScript", "ReactJS","JavaScript", "MongoDB"]
   const handleClick = (e) => {
     addToText(e.target.textContent);
   };
   const handleEditText = () => {changeEditMoode(true)};
-  const handleDeleteRow = () => {};
+  const handleDeleteRow = () => {
+    items=items.filter(i=>i!==text)
+  };
 
   return (
     <div>
       <Typography sx={{textAlign: 'center'}}>Web Design</Typography>
       <List sx={{ width: "100%", bgcolor: "background.paper",paddingTop:"50px"}}>
-        {["HTML", "CSS"].map((value) => {
+        {[items[0],items[1]].map((value) => {
           const labelId = `checkbox-list-label-${value}`;
           return (
             <ListItem
@@ -55,7 +58,7 @@ const Lists = ({ url }) => {
       </List>
       <Typography sx={{textAlign: 'center'}}>Front-End</Typography>
       <List sx={{ width: "100%", bgcolor: "background.paper",paddingTop:"50px"}}>
-        {["JavaScript", "ReactJS"].map((value) => {
+        {[items[2],items[3]].map((value) => {
           const labelId = `checkbox-list-label-${value}`;
           return (
             <ListItem
@@ -89,7 +92,7 @@ const Lists = ({ url }) => {
       </List>
       <Typography sx={{textAlign: 'center'}}>Back-End</Typography>
       <List sx={{ width: "100%", bgcolor: "background.paper",paddingTop:"50px"}}>
-        {["NodeJS", "MongoDB"].map((value) => {
+        {[items[4],items[5]].map((value) => {
           const labelId = `checkbox-list-label-${value}`;
           return (
             <ListItem
