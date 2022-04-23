@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { Typography, Box } from "@mui/material";
 import { titleContext } from "../Context/TitleContextprovider";
+import { BASE_URL } from "../config/BaseURL";
+import higherOrederComponent from "../HOC/WithAjax"
+
 
 const Description = ({ url }) => {
   const { addToText, text, changeEditMoode } = useContext(titleContext);
@@ -45,4 +48,4 @@ const Description = ({ url }) => {
   );
 };
 
-export default Description;
+export default higherOrederComponent(Description,BASE_URL);

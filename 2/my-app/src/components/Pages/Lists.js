@@ -9,22 +9,22 @@ import CreateIcon from "@mui/icons-material/Create";
 import Typography from "@mui/material/Typography";
 import { titleContext } from "../Context/TitleContextprovider";
 
-const Lists = ({ url }) => {
+const Lists = () => {
   const {addToText,text,changeEditMoode} = useContext(titleContext);
-  let items=["HTML", "CSS","JavaScript", "ReactJS","JavaScript", "MongoDB"]
+  //let items=["HTML", "CSS","JavaScript", "ReactJS","JavaScript", "MongoDB"]
   const handleClick = (e) => {
     addToText(e.target.textContent);
   };
   const handleEditText = () => {changeEditMoode(true)};
   const handleDeleteRow = () => {
-    items=items.filter(i=>i!==text)
+    // items=items.filter(i=>i!==text)
   };
 
   return (
     <div>
       <Typography sx={{textAlign: 'center'}}>Web Design</Typography>
       <List sx={{ width: "100%", bgcolor: "background.paper",paddingTop:"50px"}}>
-        {[items[0],items[1]].map((value) => {
+        {["HTML", "CSS"].map((value) => {
           const labelId = `checkbox-list-label-${value}`;
           return (
             <ListItem
@@ -58,7 +58,7 @@ const Lists = ({ url }) => {
       </List>
       <Typography sx={{textAlign: 'center'}}>Front-End</Typography>
       <List sx={{ width: "100%", bgcolor: "background.paper",paddingTop:"50px"}}>
-        {[items[2],items[3]].map((value) => {
+        {["JavaScript", "ReactJS"].map((value) => {
           const labelId = `checkbox-list-label-${value}`;
           return (
             <ListItem
@@ -92,7 +92,7 @@ const Lists = ({ url }) => {
       </List>
       <Typography sx={{textAlign: 'center'}}>Back-End</Typography>
       <List sx={{ width: "100%", bgcolor: "background.paper",paddingTop:"50px"}}>
-        {[items[4],items[5]].map((value) => {
+        {["JavaScript", "MongoDB"].map((value) => {
           const labelId = `checkbox-list-label-${value}`;
           return (
             <ListItem

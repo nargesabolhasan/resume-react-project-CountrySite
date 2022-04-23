@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -11,14 +10,43 @@ import { Typography } from "@mui/material";
 import { IsLogin } from "../Context/IsLogin";
 import { useNavigate } from "react-router-dom";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { React, useEffect, useState,useContext } from "react";
+import { userContext } from "../Context/UserContext";
 
 const Login = () => {
   const { userIsLogin } = useContext(IsLogin);
+  const { addUser } = useContext(userContext);
+
   let navigate = useNavigate();
+
+  const [users, setUsers] = useState([]);
+
+  const fetchUrl = async () => {
+    const res = await fetch("https://reqres.in/api/users/");
+    const json = await res.json();
+    setUsers(json.data);
+  };
+
+  const authUser=(values)=>{
+    users?.map((user) => {
+      if(values.email===user.email){
+        alert("lOGIN completed successfully");
+        navigate("/Dashboard", { replace: true });
+        localStorage.setItem("token", "QpwL5tke4Pnpja7X4")
+        addUser(user)
+      }
+  })}
+
+
+
+  useEffect(() => {
+    fetchUrl();
+  }, []);
 
   const handleBack = () => {
     navigate("/", { replace: true });
   };
+
   return (
     <>
       <Formik
@@ -40,12 +68,10 @@ const Login = () => {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert("lOGIN completed successfully");
-            setSubmitting(false);
-            userIsLogin();
-            navigate("/Dashboard", { replace: true });
-          }, 400);
+              setTimeout(() => {
+                setSubmitting(false);
+                authUser(values)
+              }, 400);
         }}
       >
         {({
@@ -105,11 +131,7 @@ const Login = () => {
           </form>
         )}
       </Formik>
-      <Button
-        sx={{ mt: 10 }}
-        variant="outlined"
-        onClick={handleBack}
-      >
+      <Button sx={{ mt: 10 }} variant="outlined" onClick={handleBack}>
         <KeyboardBackspaceIcon />
         Back to Home
       </Button>
