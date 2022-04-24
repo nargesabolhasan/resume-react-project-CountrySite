@@ -13,11 +13,15 @@ const SearchBar = ({ url }) => {
   const { changeUrl, AllCountry } = useContext(countryUrlContext);
   let navigate = useNavigate();
   //----------------------
+  const handleSEARCHICON=()=>{
+
+  }
+   //----------------------
   const searchHandler = (e) => {
     var searchLowerCase = e.target.value.toLowerCase();
     url.filter((i) => {
       var nameLowerCase = i.name.toLowerCase();
-      if (nameLowerCase.includes(searchLowerCase)) {
+      if (nameLowerCase===searchLowerCase) {
         changeUrl(i.name);
         navigate(`/FilteredPage/${i.name}`, { replace: true });
       }
@@ -33,7 +37,7 @@ const SearchBar = ({ url }) => {
     <>
       <nav>
         <label className={theme === THEME.DARK ? "input" : "inputDark"}>
-          <HiSearch />
+          <HiSearch onClick={handleSEARCHICON}/>
           <input
             className={theme === THEME.DARK ? "input" : "inputDark"}
             name="search"

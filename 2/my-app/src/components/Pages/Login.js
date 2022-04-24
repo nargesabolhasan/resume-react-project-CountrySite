@@ -22,7 +22,7 @@ const Login = () => {
   const [users, setUsers] = useState([]);
 
   const fetchUrl = async () => {
-    const res = await fetch("https://reqres.in/api/users/");
+    const res = await fetch("https://reqres.in/api/users");
     const json = await res.json();
     setUsers(json.data);
   };
@@ -33,7 +33,10 @@ const Login = () => {
         alert("lOGIN completed successfully");
         navigate("/Dashboard", { replace: true });
         localStorage.setItem("token", "QpwL5tke4Pnpja7X4")
+        userIsLogin()
         addUser(user)
+        
+
       }
   })}
 
